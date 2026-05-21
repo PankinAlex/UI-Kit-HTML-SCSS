@@ -1,0 +1,101 @@
+@import 'variables';
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: $font-main;
+  font-size: 16px;
+  color: $dark-color;
+  background: $white;
+  padding: 40px;
+}
+
+h1 { font-size: 36px; margin-bottom: 16px; }
+h2 { font-size: 28px; margin-bottom: 14px; }
+h3 { font-size: 22px; margin-bottom: 12px; }
+p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
+
+// КНОПКИ
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 16px;
+  transition: opacity $transition;
+  text-decoration: none;
+  margin-right: 8px;
+}
+.btn:hover { opacity: 0.85; }
+.btn-primary   { background: $primary-color;   color: $white; }
+.btn-secondary { background: $secondary-color; color: $white; }
+.btn-danger    { background: $danger-color;     color: $white; }
+.btn-success   { background: $success-color;    color: $white; }
+.btn-outline {
+  background: transparent;
+  border: 2px solid $primary-color;
+  color: $primary-color;
+}
+
+// КАРТОЧКА
+.card {
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  padding: 24px;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+.card__title { font-size: 20px; margin-bottom: 8px; font-weight: bold; }
+.card__text  { color: #666; line-height: 1.5; }
+
+// БЕЙДЖИ
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+  margin-right: 4px;
+}
+.badge-primary { background: $primary-color; }
+.badge-danger  { background: $danger-color; }
+.badge-success { background: $success-color; }
+
+// АЛЕРТЫ
+.alert {
+  padding: 14px 18px;
+  border-radius: $border-radius;
+  margin-bottom: 10px;
+  max-width: 500px;
+}
+.alert-info    { background: #d6eaff; color: #1a5fa8; }
+.alert-danger  { background: #fde8e8; color: #c0392b; }
+.alert-success { background: #d5f5e3; color: #1e8449; }
+
+// ФОРМА
+.form-group {
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
+  font-size: 16px;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: $primary-color;
+}

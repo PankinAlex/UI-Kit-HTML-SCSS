@@ -1,0 +1,118 @@
+// ===== ПЕРЕМЕННЫЕ =====
+$primary-color: #4A90E2;
+$secondary-color: #7B68EE;
+$danger-color: #E74C3C;
+$success-color: #2ECC71;
+$dark-color: #333333;
+$light-color: #F5F5F5;
+$white: #ffffff;
+$font-main: 'Arial', sans-serif;
+$border-radius: 6px;
+$transition: 0.3s ease;
+
+// ===== СБРОС =====
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  font-size: 16px;
+  color: $dark-color;
+  background: $white;
+  padding: 40px;
+}
+
+// ===== ТИПОГРАФИКА =====
+h1 { font-size: 36px; margin-bottom: 16px; }
+h2 { font-size: 28px; margin-bottom: 14px; }
+h3 { font-size: 22px; margin-bottom: 12px; }
+p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
+
+// ===== КНОПКИ =====
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 16px;
+  transition: opacity $transition;
+  text-decoration: none;
+
+  &:hover { opacity: 0.85; }
+
+  &-primary   { background: $primary-color;   color: $white; }
+  &-secondary { background: $secondary-color; color: $white; }
+  &-danger    { background: $danger-color;     color: $white; }
+  &-success   { background: $success-color;    color: $white; }
+  &-outline {
+    background: transparent;
+    border: 2px solid $primary-color;
+    color: $primary-color;
+  }
+}
+
+// ===== КАРТОЧКА =====
+.card {
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  padding: 24px;
+  margin-bottom: 20px;
+
+  &__title { font-size: 20px; margin-bottom: 8px; }
+  &__text  { color: #666; line-height: 1.5; }
+}
+
+// ===== ФОРМЫ =====
+.form-group {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    font-size: 16px;
+    transition: border-color $transition;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+}
+
+// ===== БЕЙДЖИ =====
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+
+  &-primary   { background: $primary-color; }
+  &-danger    { background: $danger-color; }
+  &-success   { background: $success-color; }
+}
+
+// ===== АЛЕРТЫ =====
+.alert {
+  padding: 14px 18px;
+  border-radius: $border-radius;
+  margin-bottom: 16px;
+
+  &-info    { background: #d6eaff; color: #1a5fa8; }
+  &-danger  { background: #fde8e8; color: #c0392b; }
+  &-success { background: #d5f5e3; color: #1e8449; }
+}
