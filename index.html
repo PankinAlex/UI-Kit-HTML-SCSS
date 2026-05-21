@@ -3,56 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Kit</title>
+  <title>UI Kit — Документация</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <h1>UI Kit</h1>
-  <h2>Компоненты интерфейса</h2>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar__logo">UI Kit</a>
+    <button class="navbar__burger" onclick="
+      document.querySelector('.navbar__menu').classList.toggle('is-open')
+    ">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar__menu">
+      <li><a href="#buttons" class="navbar__link">Кнопки</a></li>
+      <li><a href="#inputs"  class="navbar__link">Поля ввода</a></li>
+      <li><a href="#cards"   class="navbar__link">Карточки</a></li>
+      <li><a href="#badges"  class="navbar__link">Бейджи</a></li>
+      <li><a href="#alerts"  class="navbar__link">Алерты</a></li>
+    </ul>
+  </nav>
 
-  <!-- КНОПКИ -->
-  <h3>Кнопки</h3>
-  <button class="btn btn-primary">Primary</button>
-  <button class="btn btn-secondary">Secondary</button>
-  <button class="btn btn-danger">Danger</button>
-  <button class="btn btn-success">Success</button>
-  <button class="btn btn-outline">Outline</button>
+  <div class="container">
 
-  <br><br>
+    <h1>UI Kit — Документация</h1>
+    <p>Библиотека переиспользуемых компонентов на HTML и SCSS.</p>
 
-  <!-- КАРТОЧКА -->
-  <h3>Карточка</h3>
-  <div class="card">
-    <div class="card__title">Заголовок карточки</div>
-    <div class="card__text">Это текст внутри карточки. Здесь может быть любое описание.</div>
+    <!-- КНОПКИ -->
+    <section id="buttons">
+      <h2>Кнопки</h2>
+
+      <h3>Варианты</h3>
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--secondary">Secondary</button>
+      <button class="btn btn--danger">Danger</button>
+      <button class="btn btn--success">Success</button>
+      <button class="btn btn--outline">Outline</button>
+      <button class="btn btn--disabled" disabled>Disabled</button>
+
+      <h3>Размеры</h3>
+      <button class="btn btn--primary btn--small">Small</button>
+      <button class="btn btn--primary btn--medium">Medium</button>
+      <button class="btn btn--primary btn--large">Large</button>
+    </section>
+
+    <!-- ПОЛЯ ВВОДА -->
+    <section id="inputs">
+      <h2>Поля ввода</h2>
+
+      <h3>Обычное</h3>
+      <div class="form-group">
+        <label>Имя</label>
+        <input type="text" placeholder="Введите имя">
+      </div>
+
+      <h3>С иконкой</h3>
+      <div class="form-group form-group--with-icon">
+        <label>Поиск</label>
+        <div class="form-group__input-wrap">
+          <span class="form-group__icon">🔍</span>
+          <input type="text" placeholder="Поиск...">
+        </div>
+      </div>
+
+      <h3>Ошибка</h3>
+      <div class="form-group form-group--error">
+        <label>Email</label>
+        <input type="email" placeholder="Введите email" value="неверный-email">
+        <span class="form-group__error-text">Неверный формат email</span>
+      </div>
+
+      <h3>Textarea и Select</h3>
+      <div class="form-group">
+        <label>Сообщение</label>
+        <textarea placeholder="Введите сообщение" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Выбор</label>
+        <select>
+          <option>Вариант 1</option>
+          <option>Вариант 2</option>
+          <option>Вариант 3</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- КАРТОЧКИ -->
+    <section id="cards">
+      <h2>Карточки</h2>
+
+      <h3>Без изображения</h3>
+      <div class="grid">
+        <div class="card card--small">
+          <div class="card__title">Small карточка</div>
+          <div class="card__text">Небольшая карточка без изображения.</div>
+        </div>
+        <div class="card card--medium">
+          <div class="card__title">Medium карточка</div>
+          <div class="card__text">Средняя карточка без изображения.</div>
+        </div>
+        <div class="card card--large">
+          <div class="card__title">Large карточка</div>
+          <div class="card__text">Большая карточка без изображения.</div>
+        </div>
+      </div>
+
+      <h3>С изображением</h3>
+      <div class="grid">
+        <div class="card">
+          <img class="card__image"
+               src="https://placehold.co/400x180" alt="Изображение">
+          <div class="card__title">Карточка с фото</div>
+          <div class="card__text">Описание карточки с изображением.</div>
+        </div>
+        <div class="card">
+          <img class="card__image"
+               src="https://placehold.co/400x180" alt="Изображение">
+          <div class="card__title">Карточка с фото</div>
+          <div class="card__text">Описание карточки с изображением.</div>
+        </div>
+        <div class="card">
+          <img class="card__image"
+               src="https://placehold.co/400x180" alt="Изображение">
+          <div class="card__title">Карточка с фото</div>
+          <div class="card__text">Описание карточки с изображением.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЕЙДЖИ -->
+    <section id="badges">
+      <h2>Бейджи</h2>
+      <span class="badge badge--primary">Primary</span>
+      <span class="badge badge--danger">Danger</span>
+      <span class="badge badge--success">Success</span>
+    </section>
+
+    <!-- АЛЕРТЫ -->
+    <section id="alerts">
+      <h2>Алерты</h2>
+      <div class="alert alert--info">Информационное сообщение</div>
+      <div class="alert alert--danger">Сообщение об ошибке</div>
+      <div class="alert alert--success">Успешное действие</div>
+    </section>
+
   </div>
-
-  <!-- БЕЙДЖИ -->
-  <h3>Бейджи</h3>
-  <span class="badge badge-primary">Primary</span>
-  <span class="badge badge-danger">Danger</span>
-  <span class="badge badge-success">Success</span>
-
-  <br><br>
-
-  <!-- АЛЕРТЫ -->
-  <h3>Алерты</h3>
-  <div class="alert alert-info">Информационное сообщение</div>
-  <div class="alert alert-danger">Сообщение об ошибке</div>
-  <div class="alert alert-success">Успешное действие</div>
-
-  <!-- ФОРМА -->
-  <h3>Форма</h3>
-  <div class="form-group">
-    <label>Имя</label>
-    <input type="text" placeholder="Введите имя">
-  </div>
-  <div class="form-group">
-    <label>Сообщение</label>
-    <textarea placeholder="Введите сообщение"></textarea>
-  </div>
-  <button class="btn btn-primary">Отправить</button>
 
 </body>
 </html>

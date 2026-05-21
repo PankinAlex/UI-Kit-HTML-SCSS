@@ -1,4 +1,4 @@
-// ===== ПЕРЕМЕННЫЕ =====
+ // ===== ПЕРЕМЕННЫЕ =====
 $primary-color: #4A90E2;
 $secondary-color: #7B68EE;
 $danger-color: #E74C3C;
@@ -21,14 +21,14 @@ body {
   font-family: $font-main;
   font-size: 16px;
   color: $dark-color;
-  background: $white;
+  background: $light-color;
   padding: 40px;
 }
 
 // ===== ТИПОГРАФИКА =====
 h1 { font-size: 36px; margin-bottom: 16px; }
 h2 { font-size: 28px; margin-bottom: 14px; }
-h3 { font-size: 22px; margin-bottom: 12px; }
+h3 { font-size: 22px; margin-bottom: 12px; margin-top: 32px; }
 p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
 
 // ===== КНОПКИ =====
@@ -39,20 +39,36 @@ p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
   border-radius: $border-radius;
   cursor: pointer;
   font-size: 16px;
-  transition: opacity $transition;
+  transition: opacity $transition, transform $transition;
   text-decoration: none;
+  margin-right: 8px;
+  margin-bottom: 8px;
 
-  &:hover { opacity: 0.85; }
+  &:hover  { opacity: 0.85; }
+  &:active { transform: scale(0.97); }
+  &:focus  { outline: 3px solid rgba($primary-color, 0.4); }
 
-  &-primary   { background: $primary-color;   color: $white; }
-  &-secondary { background: $secondary-color; color: $white; }
-  &-danger    { background: $danger-color;     color: $white; }
-  &-success   { background: $success-color;    color: $white; }
-  &-outline {
+  // Варианты
+  &--primary   { background: $primary-color;   color: $white; }
+  &--secondary { background: $secondary-color; color: $white; }
+  &--danger    { background: $danger-color;     color: $white; }
+  &--success   { background: $success-color;    color: $white; }
+  &--outline {
     background: transparent;
     border: 2px solid $primary-color;
     color: $primary-color;
   }
+  &--disabled {
+    background: #ccc;
+    color: #888;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Размеры
+  &--small  { padding: 4px 12px;  font-size: 12px; }
+  &--medium { padding: 10px 24px; font-size: 16px; }
+  &--large  { padding: 16px 36px; font-size: 20px; }
 }
 
 // ===== КАРТОЧКА =====
@@ -62,19 +78,47 @@ p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   padding: 24px;
   margin-bottom: 20px;
+  overflow: hidden;
 
-  &__title { font-size: 20px; margin-bottom: 8px; }
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    margin-bottom: 16px;
+  }
+
+  &__title { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
   &__text  { color: #666; line-height: 1.5; }
+
+  // Размеры
+  &--small  { max-width: 200px; }
+  &--medium { max-width: 340px; }
+  &--large  { max-width: 500px; }
 }
 
 // ===== ФОРМЫ =====
 .form-group {
   margin-bottom: 16px;
+  position: relative;
 
   label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
+  }
+
+  &__input-wrap {
+    position: relative;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
   }
 
   input, textarea, select {
@@ -84,11 +128,32 @@ p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
     border-radius: $border-radius;
     font-size: 16px;
     transition: border-color $transition;
+    background: $white;
 
     &:focus {
       outline: none;
       border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.15);
     }
+  }
+
+  &--with-icon input {
+    padding-left: 38px;
+  }
+
+  // Error состояние
+  &--error {
+    input, textarea {
+      border-color: $danger-color;
+      &:focus { box-shadow: 0 0 0 3px rgba($danger-color, 0.15); }
+    }
+  }
+
+  &__error-text {
+    color: $danger-color;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
   }
 }
 
@@ -100,10 +165,11 @@ p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
   font-size: 12px;
   font-weight: bold;
   color: $white;
+  margin-right: 6px;
 
-  &-primary   { background: $primary-color; }
-  &-danger    { background: $danger-color; }
-  &-success   { background: $success-color; }
+  &--primary   { background: $primary-color; }
+  &--danger    { background: $danger-color; }
+  &--success   { background: $success-color; }
 }
 
 // ===== АЛЕРТЫ =====
@@ -112,7 +178,101 @@ p  { font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
   border-radius: $border-radius;
   margin-bottom: 16px;
 
-  &-info    { background: #d6eaff; color: #1a5fa8; }
-  &-danger  { background: #fde8e8; color: #c0392b; }
-  &-success { background: #d5f5e3; color: #1e8449; }
+  &--info    { background: #d6eaff; color: #1a5fa8; }
+  &--danger  { background: #fde8e8; color: #c0392b; }
+  &--success { background: #d5f5e3; color: #1e8449; }
+}
+
+// ===== NAVBAR =====
+.navbar {
+  background: $dark-color;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-radius: $border-radius;
+  margin-bottom: 40px;
+
+  &__logo {
+    color: $white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+  }
+
+  &__link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color $transition;
+
+    &:hover { color: $white; }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $white;
+      border-radius: 2px;
+      transition: $transition;
+    }
+  }
+}
+
+// ===== GRID СЕТКА =====
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// ===== АДАПТИВ =====
+@media (max-width: 768px) {
+  body { padding: 16px; }
+
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+
+    &__menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 12px 0;
+      gap: 12px;
+
+      &.is-open { display: flex; }
+    }
+
+    &__burger { display: flex; }
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
